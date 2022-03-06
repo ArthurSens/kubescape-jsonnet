@@ -14,7 +14,7 @@ JSONNETFMT_ARGS=-n 2 --max-blank-lines 2 --string-style s --comment-style s
 
 
 
-all: generate fmt test docs
+all: generate fmt
 
 .PHONY: clean
 clean:
@@ -29,7 +29,7 @@ crdschemas: vendor
 	./scripts/generate-schemas.sh
 
 .PHONY: generate
-generate: $(JSONNET_BIN)
+generate: vendor $(JSONNET_BIN)
 	./build.sh
 
 .PHONY: update
