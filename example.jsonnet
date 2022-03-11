@@ -1,4 +1,4 @@
-local kubescape = import 'kubescape.libsonnet';
+local kubescape = import 'jsonnet/kubescape.libsonnet';
 local kp =
   (import 'kube-prometheus/main.libsonnet') +
   {
