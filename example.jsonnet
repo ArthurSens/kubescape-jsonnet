@@ -6,6 +6,10 @@ local kp =
       common+: {
         namespace: 'monitoring',
       },
+
+      grafana+: {
+        dashboards+: $.kubescape.mixin.grafanaDashboards
+      },
     },
 
     kubescape: kubescape({

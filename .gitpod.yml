@@ -5,4 +5,6 @@
 tasks:
   - init: make
 
-
+vscode:
+  extensions:
+    - heptio.jsonnet
