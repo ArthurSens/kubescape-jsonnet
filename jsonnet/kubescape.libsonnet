@@ -32,14 +32,18 @@ local defaults = {
 
 function(params) {
   local k = self,
-  local config = defaults + params,
+  local _config = defaults + params,
   // Safety check
-  assert std.isObject(config.resources),
+  assert std.isObject(_config.resources),
+
+  mixin:: (import 'mixin/mixin.libsonnet') {
+    _config+:: k._config.mixin._config,
+  },
 
   _metadata:: {
-    name: config.name,
-    namespace: config.namespace,
-    labels: config.commonLabels,
+    name: _config.name,
+    namespace: _config.namespace,
+    labels: _config.commonLabels,
   },
 
   serviceAccount: {
@@ -85,7 +89,7 @@ function(params) {
     kind: 'Service',
     metadata: k._metadata,
     spec: {
-      selector: config.selectorLabels,
+      selector: _config.selectorLabels,
       type: 'NodePort',
       ports: [{
         name: 'metrics',
@@ -98,8 +102,8 @@ function(params) {
 
   deployment: {
     local container = {
-      name: config.name,
-      image: config.image + ':' + config.version,
+      name: _config.name,
+      image: _config.image + ':' + _config.version,
       env: [
         {
           name: 'KS_RUN_PROMETHEUS_SERVER',
@@ -114,7 +118,7 @@ function(params) {
         containerPort: 8080,
       }],
       command: ['kubescape'],
-      resources: config.resources,
+      resources: _config.resources,
     },
 
     apiVersion: 'apps/v1',
@@ -123,7 +127,7 @@ function(params) {
     spec: {
       replicas: 1,
       selector: {
-        matchLabels: config.selectorLabels,
+        matchLabels: _config.selectorLabels,
       },
       template: {
         metadata: {
@@ -148,7 +152,7 @@ function(params) {
         port: 'metrics',
       }],
       selector: {
-        matchLabels: config.selectorLabels,
+        matchLabels: _config.selectorLabels,
       },
     },
   },

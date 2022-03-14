@@ -8,7 +8,7 @@ local kp =
       },
 
       grafana+: {
-        dashboards+: $.kubescape.mixin.grafanaDashboards
+        dashboards+: $.kubescape.mixin.grafanaDashboards,
       },
     },
 
