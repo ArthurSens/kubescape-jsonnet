@@ -35137,16 +35137,6 @@ items:
           "__elements": [
 
           ],
-          "__inputs": [
-              {
-                  "description": "",
-                  "label": "prometheus",
-                  "name": "DS_PROMETHEUS",
-                  "pluginId": "prometheus",
-                  "pluginName": "Prometheus",
-                  "type": "datasource"
-              }
-          ],
           "__requires": [
               {
                   "id": "grafana",
@@ -35198,7 +35188,7 @@ items:
           "fiscalYearStartMonth": 0,
           "graphTooltip": 0,
           "id": null,
-          "iteration": 1647016249581,
+          "iteration": 1647333864033,
           "links": [
 
           ],
@@ -35207,7 +35197,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "${DS_PROMETHEUS}"
+                      "uid": "$datasource"
                   },
                   "fieldConfig": {
                       "defaults": {
@@ -35249,8 +35239,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -35289,7 +35278,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "$datasource"
                           },
                           "exemplar": true,
                           "expr": "sort_desc(sum(kubescape_resources_failed_count{cluster=~\"$cluster\", framework=~\"$framework\"}) by (control))",
@@ -35304,7 +35293,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "${DS_PROMETHEUS}"
+                      "uid": "$datasource"
                   },
                   "fieldConfig": {
                       "defaults": {
@@ -35322,8 +35311,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -35364,7 +35352,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "$datasource"
                           },
                           "exemplar": false,
                           "expr": "sum(kubescape_object_failed_count{cluster=~\"$cluster\", framework=~\"$framework\"}) by (control, exported_namespace, groupVersionKind, name)",
@@ -35418,11 +35406,30 @@ items:
               "list": [
                   {
                       "current": {
+                          "selected": false,
+                          "text": "prometheus",
+                          "value": "prometheus"
+                      },
+                      "hide": 0,
+                      "includeAll": false,
+                      "multi": false,
+                      "name": "datasource",
+                      "options": [
+
+                      ],
+                      "query": "prometheus",
+                      "refresh": 1,
+                      "regex": "",
+                      "skipUrlSync": false,
+                      "type": "datasource"
+                  },
+                  {
+                      "current": {
 
                       },
                       "datasource": {
                           "type": "prometheus",
-                          "uid": "${DS_PROMETHEUS}"
+                          "uid": "$datasource"
                       },
                       "definition": "label_values(kubescape_resources_found_count, cluster)",
                       "hide": 0,
@@ -35448,7 +35455,7 @@ items:
                       },
                       "datasource": {
                           "type": "prometheus",
-                          "uid": "${DS_PROMETHEUS}"
+                          "uid": "$datasource"
                       },
                       "definition": "label_values(kubescape_resources_failed_count{cluster=~\"$cluster\"}, framework)",
                       "hide": 0,
