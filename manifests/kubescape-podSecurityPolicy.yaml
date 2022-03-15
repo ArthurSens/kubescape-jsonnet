@@ -16,6 +16,8 @@ spec:
   readOnlyRootFilesystem: false
   requiredDropCapabilities:
   - ALL
+  runAsUser:
+    rule: RunAsAny
   seLinux:
     rule: RunAsAny
   supplementalGroups:
