@@ -5,14 +5,14 @@ metadata:
     app.kubernetes.io/component: kubescape
     app.kubernetes.io/name: kubescape
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: prometheus.v1
+    app.kubernetes.io/version: prometheus.v2
   name: kubescape
   namespace: monitoring
 spec:
   endpoints:
-  - interval: 120s
+  - interval: 180s
     port: metrics
-    scrapeTimeout: 120s
+    scrapeTimeout: 180s
   selector:
     matchLabels:
       app.kubernetes.io/component: kubescape
