@@ -21,7 +21,7 @@ local defaults = {
     for labelName in std.objectFields(defaults.commonLabels)
     if !std.setMember(labelName, ['app.kubernetes.io/version'])
   },
-  scrapeInterval: '180s',
+  scrapeInterval: '60s',
   mixin: {
     ruleLabels: {},
     _config: {

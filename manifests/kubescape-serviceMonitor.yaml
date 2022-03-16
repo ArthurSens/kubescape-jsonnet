@@ -10,9 +10,9 @@ metadata:
   namespace: monitoring
 spec:
   endpoints:
-  - interval: 180s
+  - interval: 60s
     port: metrics
-    scrapeTimeout: 180s
+    scrapeTimeout: 60s
   selector:
     matchLabels:
       app.kubernetes.io/component: kubescape
